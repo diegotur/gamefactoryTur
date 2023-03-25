@@ -2,7 +2,7 @@ import { FlatList } from 'react-native'
 import React, {useEffect} from 'react'
 import GameItem from '../components/GameItem'
 import { useSelector, useDispatch } from 'react-redux'
-import {selectGame, filterGames} from "../store/actions/games.action" 
+import {filterGames, selectGame} from "../store/actions/games.action" 
 
 const CategoryGameScreen = ({ navigation }) => {
 
@@ -10,13 +10,15 @@ const CategoryGameScreen = ({ navigation }) => {
 const dispatch = useDispatch()
 
 const categoryGames = useSelector(state => state.games.filteredGames)
-const category = useSelector(state => state.categories.selected)
+
+const category = useSelector(state => state.category.selected)
 
 useEffect(()=>{
-  dispatch(filterGames(category.Id))
+  dispatch(filterGames(category.id))
 },[])
 
 const handleOnSelected = (item) => {
+    dispatch(selectGame(item.id))
     navigation.navigate('Detalle', {
       games: item
     })

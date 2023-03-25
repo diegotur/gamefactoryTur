@@ -11,17 +11,13 @@ const initialState = {
 const GameReducer  = (state = initialState, action) =>{
     switch(action.type) {
         case SELECT_GAME:
-            const SelectedGame = state.games.find((game)=> game.id === action.gameId)
-            if (SelectedGame === -1) return state;
-            return {...state, selected: state.games[SelectedGame]}
+            return {...state, selected: state.games.find(game=>game.id === action.gameId)}
         case FILTER_GAMES:
-            const filteredGames = state.games.filter((game)=> game.categoryId === action.categoryId)
-            if (filteredGames === -1) return state;
-            return {...state, selected: state.categories[filteredGames]}
+            return{
+                ...state, filteredGames: state.games.filter(game=>game.category === action.categoryId)
+            }
         default:
         return state;
-
-
     }
 }
 

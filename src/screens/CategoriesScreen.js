@@ -6,7 +6,7 @@ import { selectCategory } from '../store/actions/category.action'
 
 const CategoriesScreen = ({ navigation }) => {
 
-const categories = useSelector(state=> state.categories.categories) 
+const categories = useSelector(state=> state.category.categories) 
 
 const dispatch = useDispatch()
 

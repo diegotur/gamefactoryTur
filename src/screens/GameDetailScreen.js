@@ -1,17 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux' 
+import React from 'react'
+import { useSelector} from 'react-redux' 
 
 const GameDetailScreen = () => {
 
   const game = useSelector(state => state.games.selected)
-
-
-  useEffect(() => {
-    navigation.setOptions({
-      title: game
-    })
-  },[])
 
   return (
     <View style={styles.screen}>
