@@ -1,16 +1,22 @@
 import { FlatList } from 'react-native'
-import React from 'react'
-
-import { GAMES } from '../data/games'
+import React, {useEffect} from 'react'
 import GameItem from '../components/GameItem'
+import { useSelector, useDispatch } from 'react-redux'
+import {selectGame, filterGames} from "../store/actions/games.action" 
 
-const CategoryGameScreen = ({ route, navigation }) => {
+const CategoryGameScreen = ({ navigation }) => {
 
-  const { categoryId } = route.params
 
-  const games = GAMES.filter(games => games.category === categoryId)
+const dispatch = useDispatch()
 
-  const handleOnSelected = (item) => {
+const categoryGames = useSelector(state => state.games.filteredGames)
+const category = useSelector(state => state.categories.selected)
+
+useEffect(()=>{
+  dispatch(filterGames(category.Id))
+},[])
+
+const handleOnSelected = (item) => {
     navigation.navigate('Detalle', {
       games: item
     })
@@ -20,7 +26,7 @@ const CategoryGameScreen = ({ route, navigation }) => {
 
   return (
     <FlatList 
-      data={games}
+      data={categoryGames}
       keyExtractor={(item) => item.id}
       renderItem={renderGameItem}
     />
