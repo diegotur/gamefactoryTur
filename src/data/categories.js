@@ -2,7 +2,7 @@ export const CATEGORIES = [
     {
         id: '1',
         title: 'PS4',
-        color: 'lightblue'
+        color: 'white'
     },
     {
         id: '2',
@@ -12,6 +12,6 @@ export const CATEGORIES = [
     {
         id: '3',
         title: 'STEAM',
-        color: 'lightblue'
+        color: 'white'
     }
 ]

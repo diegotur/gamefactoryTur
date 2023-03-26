@@ -20,7 +20,8 @@ useEffect(()=>{
 const handleOnSelected = (item) => {
     dispatch(selectGame(item.id))
     navigation.navigate('Detalle', {
-      games: item
+      games: item,
+      title: item.name
     })
   }
 

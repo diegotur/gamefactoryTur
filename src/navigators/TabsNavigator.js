@@ -26,7 +26,7 @@ const TabsNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIcon}>
-              <Entypo name="shop" size={24} color={focused ? '#7F5DF0' : '#748C94'} />
+              <Entypo name="game-controller" size={24} color={focused ? '#7F5DF0' : '#748C94'} />
               <Text style={{ color: focused ? '#7F5DF0' : '#748C94' }}>Juegos</Text>
             </View>
           )

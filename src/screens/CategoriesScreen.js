@@ -1,14 +1,15 @@
-import { FlatList } from 'react-native'
+import { ImageBackground, FlatList, View, StyleSheet } from 'react-native'
 import React from 'react'
 import GridItem from '../components/GridItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectCategory } from '../store/actions/category.action'
+import image from "../../assets/gamefactory.png"
 
 const CategoriesScreen = ({ navigation }) => {
 
-const categories = useSelector(state=> state.category.categories) 
+    const categories = useSelector(state => state.category.categories)
 
-const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
 
     const onHandleSelectedCategory = (item) => {
@@ -22,13 +23,24 @@ const dispatch = useDispatch()
 
 
     return (
-        <FlatList
-            data={categories}
-            keyExtractor={(item) => item.id}
-            renderItem={renderGridItem}
-            numColumns={1}
-        />
+        <View >
+            <ImageBackground source={image} resizeMode="contain" style={styles.image} />
+
+
+            <FlatList
+                data={categories}
+                keyExtractor={(item) => item.id}
+                renderItem={renderGridItem}
+                numColumns={1}
+            />
+        </View>
     )
 }
 
 export default CategoriesScreen
+
+const styles = StyleSheet.create({
+    image: {
+        height: 400,
+    }
+})

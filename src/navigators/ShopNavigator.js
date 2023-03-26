@@ -15,9 +15,9 @@ const ShopNavigator = () => {
           headerStyle: {
             backgroundColor: Platform.OS === 'android' ? COLORS.primary : ''
           },
-          headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primary,
+          headerTintColor: Platform.OS === 'android' ? 'black' : COLORS.primary,
           headerTitleStyle: {
-            fontFamily: 'OpenSans_700Bold'
+            fontFamily: 'OpenSans_700Bold',
           }
         }}
       >
@@ -36,7 +36,8 @@ const ShopNavigator = () => {
         />
         <Stack.Screen
           name="Detalle"
-          component={GameDetailScreen} 
+          component={GameDetailScreen}
+          options={({ route }) => ({ title: route.params.title })} 
           />
       </Stack.Navigator>
   )

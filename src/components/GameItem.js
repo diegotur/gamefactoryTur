@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+
 
 const BreadItem = ({ item, onSelected }) => {
 
@@ -8,6 +9,7 @@ const BreadItem = ({ item, onSelected }) => {
             <View style={styles.breadItem}>
                 <View>
                     <Text style={styles.title}>{item.name}</Text>
+                    <Image source ={{uri: item.image}} style={styles.img}/>
                 </View>
                 <View>
                     <Text style={styles.details} > $ {item.price}</Text>
@@ -25,16 +27,22 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 10,
         borderRadius: 3,
-        backgroundColor: '#333'
+        backgroundColor: 'white'
     },
     title: {
         fontSize: 20,
-        color: "white",
+        color: "black",
         fontFamily: 'OpenSans_700Bold',
     },
     details: {
         fontSize: 16,
-        color: "white",
+        color: "black",
 
+    },
+    img: {
+        width: 80,
+        height:50,
+        position: "absolute",
+        marginLeft: 280,
     }
 })
