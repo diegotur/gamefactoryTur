@@ -9,13 +9,16 @@ const formatDay = (time) => {
 }
 
 const OrderItems = ({ item, onDelete }) => {
+
+    const gameNames = item.items.map((n) => n.name);
+
+    const names = gameNames.join(", ")
+
     return (
         <View style={styles.order}>
             <View>
                 <Text style={styles.date}>{formatDay(item.date)}</Text>
-                <Text style={styles.game}>{item.items[0].name}</Text>
-                <Text style={styles.game}>{item.items[1].name}</Text>
-                <Text style={styles.game}>{item.items[2].name}</Text>
+                <Text style={styles.game}>{names}</Text>
                 <Text style={styles.total}>${item.total}</Text>
             </View>
             <View style={styles.actions}>
@@ -46,5 +49,10 @@ const styles = StyleSheet.create({
     total: {
         fontSize: 18,
         fontFamily: "OpenSans_700Bold"
+    },
+    game: {
+        fontSize: 28,
+        marginTop: 15,
+        width: 300,
     }
 })

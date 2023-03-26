@@ -1,20 +1,32 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
 import OrderItems from '../components/OrderItems'
-import { ORDERS } from '../data/orders'
+import { useSelector, useDispatch } from 'react-redux'
+import { showOrders } from '../store/actions/orders.action'
+
 
 
 const OrdersScreen = () => {
+    
+    const orders = useSelector(state=> state.orders.orders)
+    
+    console.log(orders)
+    
+    const dispatch = useDispatch()
+    
+    const onShowOrders = () =>{
+        dispatch(showOrders())
+    }
 
     const onDelete = (id) => {
         console.log("delete", id)
     }
 
-    const renderItem = ({ item }) => <OrderItems item={item} onDelete={onDelete} />
+    const renderItem = ({ item }) => <OrderItems item={item} onDelete={onDelete} onShowOrders={onShowOrders}/>
     return (
         <View style={styles.container}>
             <FlatList
-                data={ORDERS}
+                data={orders}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id} />
         </View>

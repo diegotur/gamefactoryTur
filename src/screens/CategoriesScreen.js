@@ -9,6 +9,7 @@ const CategoriesScreen = ({ navigation }) => {
 
     const categories = useSelector(state => state.category.categories)
 
+
     const dispatch = useDispatch()
 
 

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 
-const BreadItem = ({ item, onSelected }) => {
+const GameItem = ({ item, onSelected }) => {
 
     return (
         <TouchableOpacity onPress={() => onSelected(item)}>
@@ -19,7 +19,7 @@ const BreadItem = ({ item, onSelected }) => {
     )
 }
 
-export default BreadItem
+export default GameItem
 
 const styles = StyleSheet.create({
 
