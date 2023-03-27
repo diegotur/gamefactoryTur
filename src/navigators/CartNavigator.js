@@ -13,7 +13,7 @@ const CartNavigator = () => {
         headerStyle: {
           backgroundColor: Platform.OS === 'android' ? COLORS.primary : ''
         },
-        headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primary,
+        headerTintColor: Platform.OS === 'android' ? 'black' : COLORS.primary,
         headerTitleStyle: {
           fontFamily: 'OpenSans_700Bold'
         }

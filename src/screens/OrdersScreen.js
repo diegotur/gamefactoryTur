@@ -10,8 +10,6 @@ const OrdersScreen = () => {
     
     const orders = useSelector(state=> state.orders.orders)
     
-    console.log(orders)
-    
     const dispatch = useDispatch()
     
     const onShowOrders = () =>{
@@ -40,6 +38,6 @@ const styles = StyleSheet.create({
         marginTop:60,
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     }
 })

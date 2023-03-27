@@ -23,7 +23,7 @@ const OrderItems = ({ item, onDelete }) => {
             </View>
             <View style={styles.actions}>
                 <TouchableOpacity onPress={() => onDelete(item.id)}>
-                    <Ionicons name="md-trash" size={22} color={COLORS.primary} />
+                    <Ionicons name="md-trash" size={22} color={item.color} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         borderColor: "#ccc",
         borderWidth: 1,
         borderRadius: 10,
+        backgroundColor: COLORS.primary,
 
     },
     date: {

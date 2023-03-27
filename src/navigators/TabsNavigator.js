@@ -5,10 +5,9 @@ import { Entypo } from '@expo/vector-icons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-
 import ShopNavigator from './ShopNavigator'
 import CartNavigator from './CartNavigator'
-import OrdersScreen from '../screens/OrdersScreen';
+import OrdersNavigator from './OrdersNavigator';
 
 
 const BottomTabs = createBottomTabNavigator()
@@ -43,7 +42,7 @@ const TabsNavigator = () => {
           )
         }}
       />
-      <BottomTabs.Screen name='orders-tab' component={OrdersScreen}
+      <BottomTabs.Screen name='orders-tab' component={OrdersNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIcon}>

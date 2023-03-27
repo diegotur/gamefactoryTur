@@ -3,6 +3,8 @@ import React from 'react'
 import CartItem from '../components/CartItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { showCart } from '../store/actions/cart.action'
+import { COLORS } from '../constants/colors'
+
 
 const CartScreen = () => {
 
@@ -58,17 +60,20 @@ const styles = StyleSheet.create({
     padding: 12,
     borderTopColor: "#ccc",
     borderTopWidth: 1,
+    backgroundColor: COLORS.primary,
   },
   confirm: {
-    backgroundColor: "#ccc",
+    backgroundColor: COLORS.primary,
     borderRadius: 10,
     padding: 10,
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
+    alignItems: "center",
+
   },
   total: {
     flexDirection: "row",
+    
   },
   text: {
     fontSize: 18,
