@@ -2,28 +2,27 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import React from 'react'
 import CartItem from '../components/CartItem'
 import { useSelector, useDispatch } from 'react-redux'
-import { showCart } from '../store/actions/cart.action'
+import { confirmCart, removeItem } from '../store/actions/cart.action'
 import { COLORS } from '../constants/colors'
 
 
 const CartScreen = () => {
 
-  const cart = useSelector(state => state.cart.cart)
-  
+  const cart = useSelector(state => state.cart.items)
+
+  const total = useSelector(state => state.cart.total)
+
   const dispatch = useDispatch();
 
-  const onShowCart = () => {
-    dispatch(showCart())
-  }
-  const onDelete = (item) => {
-    console.log("Delete", item)
+  const onHandleDeleteItem = (itemId) => {
+    dispatch(removeItem(itemId))
   }
 
   const onConfirm = () => {
-    console.log("Confirm")
+    dispatch(confirmCart(cart, total))
   }
 
-  const renderItems = ({ item }) => <CartItem item={item} onDelete={onDelete} onShowCart={onShowCart} />
+  const renderItems = ({ item }) => <CartItem item={item} onDelete={onHandleDeleteItem} />
 
   return (
     <View style={styles.container}>
@@ -34,9 +33,10 @@ const CartScreen = () => {
         keyExtractor={(item) => item.id} />
       <View style={styles.footer}>
         <TouchableOpacity style={styles.confirm} onPress={onConfirm}>
+          <Text>CONFIRMAR PEDIDO</Text>
           <View style={styles.total}>
             <Text style={styles.text}>Total:</Text>
-            <Text style={styles.text}>$ 6500</Text>
+            <Text style={styles.text}>${total}</Text>
           </View>
         </TouchableOpacity>
 
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   total: {
     flexDirection: "row",
-    
+
   },
   text: {
     fontSize: 18,

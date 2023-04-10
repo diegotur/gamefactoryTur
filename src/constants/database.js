@@ -1,0 +1,1 @@
+export const API_URL = "https://gamefactorytur-666ab-default-rtdb.firebaseio.com/";

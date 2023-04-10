@@ -1,4 +1,5 @@
-import {createStore, combineReducers} from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
 
 import CategoryReducer from "./reducers/category.reducer";
 import GameReducer from "./reducers/game.reducer";
@@ -12,4 +13,4 @@ const RootReducer = combineReducers ({
     orders: OrdersReducer
 })
 
-export default createStore(RootReducer)
+export default createStore(RootReducer, applyMiddleware(thunk))

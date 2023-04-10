@@ -1,20 +1,25 @@
-import {ORDERS} from "../../data/orders"
-import { SHOW_ORDERS} from "../actions/orders.action"
+import { DELETE_ORDER, GET_ORDERS } from '../actions/orders.action';
 
 
-const initialState = {
-    orders: ORDERS,
-    selected: null,
+const INITIAL_STATE ={
+    list:[]
 }
 
-const OrdersReducer  = (state = initialState, action) =>{
-    switch(action.type) {
-        case SHOW_ORDERS:
-            return {...state, selected: state.orders.filter((n)=>n.id!==undefined)}
+const ordersReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case GET_ORDERS:
+            return {
+                ...state,
+                list: action.orders
+            }
+        case DELETE_ORDER:
+            return {
+                ...state,
+                list: state.list.filter(order => order.id !== action.id)
+            }
         default:
-        return state;
+            return state;
     }
 }
 
-
-export default OrdersReducer
+export default ordersReducer;

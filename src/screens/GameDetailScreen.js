@@ -1,10 +1,17 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addItem } from '../store/actions/cart.action'
 
 const GameDetailScreen = () => {
 
   const game = useSelector(state => state.games.selected)
+  const dispatch = useDispatch();
+
+  const onHandleAddToCart = () =>{
+    console.log("additem");
+    dispatch(addItem({...game, quantity:1}))
+  }
 
   return (
     <View style={styles.screen}>
@@ -12,6 +19,9 @@ const GameDetailScreen = () => {
       <Text style={styles.title}>{game.name}</Text>
       <Text style={styles.subtitle}>{game.description}</Text>
       <Text style={styles.price}>Precio: ${game.price}</Text>
+      <Button title='Agregar Juego' onPress={() => {
+                onHandleAddToCart()
+            }}/>
     </View>
   )
 }
